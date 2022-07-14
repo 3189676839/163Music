@@ -1,0 +1,21 @@
+<!-- components/song-item-v3/index.wxml -->
+<!-- 搜索详情的布局详情页 -->
+<view class="item">
+  <!-- 索引序号 -->
+  <view class="index">{{index}}</view>
+  <view class="info">
+    <view class="name content">{{item.name}}</view>
+    <view class="source">
+      <image class="icon" src="/assets/images/icons/sq.png" wx:if="{{item.sq}}"></image>
+      <image class="icon2" src="/assets/images/icons/vip.png" wx:if="{{item.fee === 1}}"></image>
+      <view class="content">
+        <!-- 歌手 -->
+        <text>{{item.ar[0].name}}</text>
+        <!-- 说明和专辑名 -->
+        <text class="dots" wx:if="{{item.alia[1]}} || {{item.al.name}}">·</text>
+        <text wx:if="{{item.alia[1]}}">{{item.alia[1]}}</text>
+        <text wx:else="{{item.al.name}}">{{item.al.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+/**app.wxss**/
+page{
+  background-color: #fafafa;
+  /* 内容区的实际宽度是 width 减 去(border + padding) 的值 */
+  box-sizing: border-box;
+}

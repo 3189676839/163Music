@@ -1,0 +1,19 @@
+<!-- components/vedio-item-v1/index.wxml -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<view class="item">
+  <!-- mv 封面 -->
+  <view class="cover">
+    <image class="image" src="{{item.cover}}" mode="widthFix"></image>
+    <!-- 视频封面的小组件 -->
+    <view class="info">
+      <!-- mv播放量 引入formatCount函数进行格式化 -->
+      <view class="count">{{format.formatCount(item.playCount)}}</view>
+      <!-- mv时长 -->
+      <view class="duration">{{format.formatDuration(item.mv.videos[0].duration)}}</view>
+    </view>
+  </view>
+  <!-- mv 说明文字 -->
+  <view class="content">
+  {{item.name}} - {{item.artistName}}
+  </view>
+</view>

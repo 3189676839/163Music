@@ -1,0 +1,24 @@
+/* pages/home-music/index.wxss */
+page{
+  padding: 0 20rpx;
+}
+.van-search{
+  padding: 10px 0 !important;
+}
+.van-search__content{
+  background-color: #fff !important;
+}
+
+/* 轮播图样式 */
+.swiper{
+  border-radius: 25rpx;
+  overflow: hidden;
+  /* 某些苹果设备圆角边框不生效是webview的bug导致的，所以要加入transform */
+  transform: translateY(0);
+}
+.swiper-item{
+  display: flex;
+}
+.swiper-item .swiper-image{
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+<!-- components/recommend-song-menu-area/index.wxml -->
+<!-- 歌单区域组件 -->
+<arear-header title="{{title}}"></arear-header>
+<scroll-view scroll-x class="menu-list">
+  <block wx:for="{{songMenu}}" wx:key="id">
+    <view class="menu-item">
+      <recommend-song-menu-item item="{{item}}" bindtap="handleClick1" data-item="{{item}}"></recommend-song-menu-item>
+    </view>
+  </block>
+</scroll-view>

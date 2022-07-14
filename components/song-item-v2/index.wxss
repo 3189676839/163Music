@@ -1,0 +1,55 @@
+/* components/song-item-v2/index.wxss */
+.item {
+  display: flex;
+  align-items: center;
+  margin: 36rpx 0 10rpx;
+  /* background-color: #ddd; */
+}
+
+.index {
+  font-size: 30rpx;
+  padding: 12rpx 0 12rpx 12rpx;
+  width: 45rpx;
+  font-family: "楷体","楷体_GB2312","宋体",poppin,Tahoma,Arial,\5FAE\8F6F\96C5\9ED1,sans-serif;
+}
+
+.info {
+  flex: 1;
+  margin-left: 16rpx;
+}
+
+.info .name {
+  font-size: 30rpx;
+}
+
+.info .source {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.source .icon,.icon2 {
+  width: 38rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
+
+.source .dots {
+  margin: 0 10rpx;
+}
+.content {
+  /* 显示两行 */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -moz-box;
+  -moz-line-clamp: 1;
+  -moz-box-orient: vertical;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  overflow: hidden;
+}

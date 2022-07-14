@@ -1,0 +1,15 @@
+<!-- components/area-header/index.wxml -->
+<view class="header">
+  <!-- header标题 -->
+  <view class="title">{{title}}</view>
+  <!-- 右文本  showRight为true显示右文本 -->
+  <view class="right" wx:if="{{showRight}}" bindtap="handleRightClick">
+    <view class="slot">
+      <slot></slot>
+    </view>
+    <view class="default">
+      <text>{{rightText}}</text>
+      <image class="icon" src="/assets/images/icons/arrow-right.png"></image>
+    </view>
+  </view>
+</view>

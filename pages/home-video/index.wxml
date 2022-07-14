@@ -1,0 +1,9 @@
+<!-- pages/home-video/index.wxml -->
+<!-- 引入wxs文件 -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<view class="video">
+    <!-- 通过data- 将数据进行动态绑定，通过点击事件的event进行获取 -->
+    <view class="item" wx:for="{{topMVs}}" wx:key="id">
+        <video-item-v1 item="{{item}}" bindtap="handleVideoItemClick" data-item="{{item}}"></video-item-v1>
+    </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "arear-header":"/components/area-header/index",
+    "recommend-song-menu-item":"/components/recommend-song-menu-item/index"
+  }
+}

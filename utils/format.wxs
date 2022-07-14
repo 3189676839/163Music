@@ -1,0 +1,31 @@
+// 数值转换单位、格式
+function formatCount(count) {
+  var counter = parseInt(count)
+  if (counter > 100000000) {
+    return (counter / 100000000).toFixed(1) + "亿"
+  } else if (counter / 10000) {
+    return (counter / 10000).toFixed(1) + "万"
+  } else {
+    return counter + ""
+  }
+}
+
+// 补零函数
+function padZero(n) {
+  n = n + ""
+  return n > 9 ? n : '0' + n
+}
+
+// 时长转换
+function formatDuration(duration) {
+  duration = duration / 1000
+  var minute = Math.floor(duration / 60)
+  var second = Math.floor(duration % 60)
+
+  return padZero(minute) + ":" + padZero(second)
+}
+// common.js
+module.exports = {
+  formatCount: formatCount,
+  formatDuration: formatDuration
+}
