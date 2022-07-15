@@ -34,16 +34,20 @@ Page({
     if (!searchValue.length) {
       this.setData({ suggestSongs: [] })
       this.setData({ resultSongs: [] })
-      this.setData({ suggestSongsNodes: [] })
+      debounceGetSearchSuggest.cancel()
       return
     }
     // console.log(searchValue);
     // 4.根据关键字进行搜索
     debounceGetSearchSuggest(searchValue).then(res => {
+      //   if (!this.data.searchValue.length) {
+      //     return
+      //   }
       // console.log(res);
       // 1.获取建议的关键字
       const suggestSongs = res.result.allMatch
       this.setData({ suggestSongs })
+      if (!suggestSongs) return
       // 2.构成nodes节点
       const suggestKeywords = suggestSongs.map(item => item.keyword)
       // console.log(suggestKeywords);
@@ -54,6 +58,7 @@ Page({
       }
       this.setData({ suggestSongsNodes })
     })
+    // this.setData({ suggestSongsNodes: [] })
   },
   // 通过回车获取到搜索结果
   handleSearchAction() {

@@ -18,7 +18,8 @@ Page({
     hotSongMenu: [],
     recommmendSongMenu: [],
     recommendSongs: [],
-    rankings: { 0: {}, 2: {}, 3: {} }
+    rankings: { 0: {}, 2: {}, 3: {} },
+
   },
   // 网络请求
   getPageData: function () {

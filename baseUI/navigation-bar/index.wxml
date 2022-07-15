@@ -1,0 +1,27 @@
+<!-- components/navigation-bar/index.wxml -->
+<view class="nav">
+  <!-- 状态栏 -->
+  <view style="height:{{statusBarHeight}}px"></view>
+  <!-- 导航栏 -->
+  <view class="nav-bar" style="height: {{navbarHeight}}px;">
+    <view class="left">
+      <!-- 也可以通过插槽自定义 -->
+      <view class="left-slot">
+        <!-- 具名插槽根据name决定是哪个插槽  <text slot="left">aaa</text> -->
+        <slot name="left"></slot>
+      </view>
+      <!-- 左边返回图标 -->
+      <view class="left-arrow">
+        <image class="icon" mode="widthFix" src="/assets/images/icons/arrow-left.png"></image>
+      </view>
+    </view>
+    <view class="center">
+      <view class="center-slot">
+        <!-- 具名插槽 <text slot="center">aaa</text> -->
+        <slot name="center"></slot>
+      </view>
+      <view class="center-title">{{title}}</view>
+    </view>
+    <view class="right"></view>
+  </view>
+</view>

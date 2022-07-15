@@ -1,6 +1,6 @@
 <!-- components/song-item-v3/index.wxml -->
 <!-- 搜索详情的布局详情页 -->
-<view class="item">
+<view class="item" bindtap="handleSongClick" data-id="{{item.id}}">
   <!-- 索引序号 -->
   <view class="index">{{index}}</view>
   <view class="info">

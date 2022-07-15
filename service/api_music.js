@@ -7,7 +7,7 @@ import hyRequest from './index1'
  */
 export function getBanners() {
   return wyRequest.get("/banner", {
-    type: 1
+    type: 2
   })
 }
 
