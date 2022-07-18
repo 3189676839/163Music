@@ -14,7 +14,7 @@
   <area-header title="歌曲推荐" bind:click="hancleMoreClick"></area-header>
   <view class="song-list">
     <block wx:for="{{recommendSongs}}" wx:key="id">
-      <song-item-v1 item="{{item}}"></song-item-v1>
+      <song-item-v1 item="{{item}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v1>
     </block>
   </view>
 </view>
@@ -27,6 +27,20 @@
   <view class="ranking-list">
     <block wx:for="{{rankings}}" wx:key="index">
       <ranking-area-item item="{{item}}" bindtap="handleRankingItemClick" data-idx="{{index}}"></ranking-area-item>
+      <!-- TODO：对播放工具的出现进行判断，自适应加padding增加高度 -->
     </block>
+  </view>
+</view>
+<!-- 播放工具栏 -->
+<view class="play-bar-placeholder" wx:if="{{currentSong.id}}"></view>
+<view class="play-bar" wx:if="{{currentSong.id}}" bind:tap="handlePlayBarClick">
+  <view class="left">
+    <image class="album album-animation" mode="aspectFill" src="{{currentSong.al.picUrl}}" style="animation-play-state:{{playAnimState}}"></image>
+    <view class="name">{{currentSong.name}}</view>
+  </view>
+  <view class="right">
+    <!-- catchtap 事件不会向上传递 -->
+    <image class="icon play" src="/assets/images/music/{{isPlaying ? 'pause' : 'play'}}_icon.png" catchtap="handlePlayBtnClick"></image>
+    <image class="icon playlist" src="/assets/images/music/playlist_icon.png"></image>
   </view>
 </view>

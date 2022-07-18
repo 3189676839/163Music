@@ -7,12 +7,14 @@ export function getSearchHot() {
 export function getSearchSuggest(keywords) {
   return hyRequest.get("/search/suggest", {
     keywords,
-    type: "mobile"
+    type: "mobile",
+    realIP: "42.91.0.126"
   })
 }
 // 搜索
 export function getSearchResult(keywords) {
   return hyRequest.get("/cloudsearch", {
-    keywords
+    keywords,
+    realIP: "42.91.0.126"
   })
 }

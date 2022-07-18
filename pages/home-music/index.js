@@ -1,12 +1,12 @@
 // pages/home-music/index.js
-import { rankingStore, rankingMap } from '../../store/index'
+import { rankingStore, rankingMap, playerStore } from '../../store/index'
 
 import { getBanners, getSongMenu, getRecommendSongMenu } from '../../service/api_music'
 import queryRect from '../../utils/query-rect'
 import throttle from '../../utils/throttle'
 
 // 套用节流函数
-const throttleQueryRect = throttle(queryRect)
+const throttleQueryRect = throttle(queryRect, 500, { trailing: true })
 Page({
 
   /**
@@ -20,6 +20,9 @@ Page({
     recommendSongs: [],
     rankings: { 0: {}, 2: {}, 3: {} },
 
+    currentSong: {},
+    isPlaying: false,
+    playAnimState: "paused"
   },
   // 网络请求
   getPageData: function () {
@@ -80,6 +83,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    // playerStore.dispatch("playMusicWithSongIdAction", { id: 1901371647 })
+
     this.getPageData()
     // 发起共享数据的请求
     rankingStore.dispatch("getRankingDataAction")
@@ -96,14 +101,42 @@ Page({
     rankingStore.onState("newRanking", this.getRankingHandler(0))
     rankingStore.onState("orginRanking", this.getRankingHandler(2))
     rankingStore.onState("upRanking", this.getRankingHandler(3))
+    // 播放器的监听
+
+    playerStore.onStates(["currentSong", "isPlaying"], ({ currentSong, isPlaying }) => {
+      if (currentSong) this.setData({ currentSong })
+      if (isPlaying !== undefined) {
+        this.setData({ isPlaying, playAnimState: isPlaying ? "running" : "paused" })
+      }
+    })
   },
 
+  handleSongItemClick(event) {
+    // console.log(event);
+    const index = event.currentTarget.dataset.index
+    console.log(index, this.data.recommendSongs);
+    playerStore.setState("playListSongs", this.data.recommendSongs)
+    playerStore.setState("playListIndex", index)
+  },
+  handlePlayBtnClick() {
+    playerStore.dispatch("changeMusicPlaySStatusAction", !this.data.isPlaying)
+    //  阻止冒泡  小程序不支持
+    // event.stopPropagation()
+  },
+  handlePlayBarClick() {
+    wx.navigateTo({
+      url: '/pages/music player/index?id=' + this.data.currentSong.id
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
 
   },
+  //   setupPlayerStoreListener(){
+  // 
+  //   },
   getRankingHandler(id) {
     // console.log(res);
     return (res) => {
@@ -121,32 +154,4 @@ Page({
       // console.log(this.data.rankings);
     }
   },
-  // getOrginRankingHandler(res) {
-  //   // console.log(res);
-  //   if (Object.keys(res).length === 0) return
-  //   const name = res.name
-  //   const coverImgUrl = res.coverImgUrl
-  //   const songList = res.tracks.slice(0, 3)
-  //   const playCount = res.playCount
-  //   const rankingObj = { name, coverImgUrl, songList, playCount }
-  //   const orginRankings = [...this.data.rankings] //浅拷贝
-  //   orginRankings.push(rankingObj)
-  //   this.setData({
-  //     rankings: orginRankings
-  //   })
-  // },
-  // getUpRankingHandler(res) {
-  //   // console.log(res);
-  //   if (Object.keys(res).length === 0) return
-  //   const name = res.name
-  //   const coverImgUrl = res.coverImgUrl
-  //   const songList = res.tracks.slice(0, 3)
-  //   const playCount = res.playCount
-  //   const rankingObj = { name, coverImgUrl, songList, playCount }
-  //   const orginRankings = [...this.data.rankings] //浅拷贝
-  //   orginRankings.push(rankingObj)
-  //   this.setData({
-  //     rankings: orginRankings
-  //   })
-  // }
 })

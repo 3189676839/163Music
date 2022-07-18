@@ -2,6 +2,7 @@
 import { getSearchHot, getSearchSuggest, getSearchResult } from '../../service/api_search'
 import { stringToNodes } from '../../utils/string-To-nodes'
 import debounce from '../../utils/debounce'
+import { rankingStore, rankingMap, playerStore } from '../../store/index'
 
 const debounceGetSearchSuggest = debounce(getSearchSuggest)
 Page({
@@ -90,5 +91,11 @@ Page({
     const keyword = event.currentTarget.dataset.keyword
     this.setData({ searchValue: keyword })
     this.handleSearchAction()
+  },
+  handleSongItemClick(event) {
+    const index = event.currentTarget.dataset.index
+    // console.log(index, this.data.resultSongs)
+    playerStore.setState("playListSongs", this.data.resultSongs)
+    playerStore.setState("playListIndex", index)
   }
 })

@@ -3,7 +3,8 @@ import wyRequest from './index'
 export function getTopMV(offset, limit = 10) {
   return wyRequest.get('/top/mv', {
     offset,
-    limit
+    limit,
+    realIP: "42.91.0.126"
   })
 }
 
@@ -12,7 +13,10 @@ export function getTopMV(offset, limit = 10) {
  * @param {Number} id  MV的id
  */
 export function getMvUrl(id) {
-  return wyRequest.get("/mv/url", { id })
+  return wyRequest.get("/mv/url", {
+    id,
+    realIP: "42.91.0.126"
+  })
 }
 
 /**
@@ -21,7 +25,8 @@ export function getMvUrl(id) {
  */
 export function getMvDetail(mvid) {
   return wyRequest.get("/mv/detail", {
-    mvid
+    mvid,
+    realIP: "42.91.0.126"
   })
 }
 
@@ -31,6 +36,7 @@ export function getMvDetail(mvid) {
  */
 export function getRelatedVideo(id) {
   return wyRequest.get("/related/allvideo", {
-    id
+    id,
+    realIP: "42.91.0.126"
   })
 }

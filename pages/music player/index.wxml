@@ -1,11 +1,11 @@
 <!-- pages/music player/index.wxml -->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
 <!-- 1.背景 -->
-<image class="bg-image" mode="aspectFill" src="{{currentSongs.al.picUrl}}"></image>
+<image class="bg-image" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
 <!-- 2.遮盖 毛玻璃 -->
 <view class="bg-cover"></view>
 <!-- 3.导航 -->
-<navigation-bar>
+<navigation-bar bind:click="handleBackClick">
   <view slot="center" class="tab">
     <view class="{{currentPage === 0 ?'active':''}}">歌曲</view>
     <view class="divider">|</view>
@@ -16,16 +16,16 @@
 <swiper class="content" style="height: {{contentHeight}}px" bindchange="handleSwiperChange">
   <swiper-item class="music">
     <view class="album">
-      <image class="image" mode="widthFix" src="{{currentSongs.al.picUrl}}"></image>
+      <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}"></image>
     </view>
     <view class="info">
-      <view class="title">{{currentSongs.name}}</view>
+      <view class="title">{{currentSong.name}}</view>
       <view class="subtitle">
         <view class="singer">{{artists}}</view>
         <view class="alias">
           专辑：
-          <text wx:if="{{currentSongs.alia[0]}}">{{currentSongs.alia[0]}}</text>
-          <text wx:else="{{currentSongs.al.name}}">{{currentSongs.al.name}}</text>
+          <text wx:if="{{currentSong.alia[0]}}">{{currentSong.alia[0]}}</text>
+          <text wx:else="{{currentSong.al.name}}">{{currentSong.al.name}}</text>
         </view>
       </view>
     </view>
@@ -38,10 +38,10 @@
       </view>
     </view>
     <view class="operation">
-      <image class="btn item-mode" src="/assets/images/player/play_order.png"></image>
-      <image class="btn item-prev" src="/assets/images/player/play_prev.png"></image>
-      <image class="btn item-pause" src="/assets/images/player/play_pause.png"></image>
-      <image class="btn item-next" src="/assets/images/player/play_next.png"></image>
+      <image class="btn item-mode" src="/assets/images/player/play_{{playModeName}}.png" bindtap="handleModeBtnClick"></image>
+      <image class="btn item-prev" src="/assets/images/player/play_prev.png" bindtap="bandlePrevBtnClick"></image>
+      <image class="btn item-pause" src="/assets/images/player/play_{{playingName}}.png" bindtap="handlePlayBtnClick"></image>
+      <image class="btn item-next" src="/assets/images/player/play_next.png" bindtap="bandleNextBtnclick"></image>
       <image class="btn item-list" src="/assets/images/player/play_music.png"></image>
     </view>
   </swiper-item>
