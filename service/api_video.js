@@ -34,9 +34,12 @@ export function getMvDetail(mvid) {
  * 请求MV的相关视频
  * @param {Number} id  MV的id
  */
-export function getRelatedVideo(id) {
-  return wyRequest.get("/related/allvideo", {
-    id,
+export function getRelatedVideo(offset, limit = 6, type = "网易出品") {
+  return wyRequest.get("/mv/all", {
+    offset,
+    limit,
+    type,
     realIP: "42.91.0.126"
   })
 }
+

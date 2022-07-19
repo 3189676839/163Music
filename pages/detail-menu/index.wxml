@@ -1,0 +1,49 @@
+<!-- pages/detail-menu/index.wxml -->
+<!-- <area-header center="热门歌单" showCenter="{{true}}"></area-header> -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<navigation-bar bind:click="handleBackClick">
+  <view slot="center" class="tab">热门歌单</view>
+</navigation-bar>
+<scroll-view scroll-y="{{true}}" style="height:{{contentHeight}}px">
+  <view class="pages">
+    <view class="title1 format">
+      <!-- 孤独 -->
+      夜的胡思乱想
+    </view>
+    <!-- 热门歌单内容区域组件 -->
+    <view>
+      <block wx:for="{{lonely}}" wx:key="id">
+        <view class="menu-item">
+          <song-item-list item="{{item}}" bindtap="handleClick1" data-item="{{item}}"></song-item-list>
+        </view>
+      </block>
+    </view>
+    <view class="title2 format">
+      <!-- 治愈 -->
+      用声音治愈黑夜里孤独的灵魂
+    </view>
+    <block wx:for="{{cure}}" wx:key="id">
+      <view class="menu-item">
+        <song-item-list item="{{item}}" bindtap="handleClick1" data-item="{{item}}"></song-item-list>
+      </view>
+    </block>
+    <view class="title3 format">
+      <!-- 华语 -->
+      华语速爆新歌
+    </view>
+    <block wx:for="{{Chmusic}}" wx:key="id">
+      <view class="menu-item">
+        <song-item-list item="{{item}}" bindtap="handleClick1" data-item="{{item}}"></song-item-list>
+      </view>
+    </block>
+    <view class="title4 format">
+      <!-- 浪漫 -->
+      浪漫至死不渝
+    </view>
+    <block wx:for="{{lovely}}" wx:key="id">
+      <view class="menu-item">
+        <song-item-list item="{{item}}" bindtap="handleClick1" data-item="{{item}}"></song-item-list>
+      </view>
+    </block>
+  </view>
+</scroll-view>

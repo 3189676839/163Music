@@ -42,9 +42,23 @@
           "query": "id=1901371647",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "hotmenu",
+          "pathName": "pages/detail-menu/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "1",
+          "pathName": "pages/detail-video/index",
+          "query": "id=14544676&index=0",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
   },
-  "libVersion": "2.17.0"
+  "libVersion": "2.25.0"
 }

@@ -37,8 +37,14 @@ Page({
     playModeIndex: 0,
     // 模式图片
     playModeName: "order",
-    playingName: "pause"
+    playingName: "pause",
 
+    playAnimState: "paused",
+
+    showlist: false,
+    playListSongs1: [],
+
+    playListIndex: 0,
   },
   onLoad(options) {
     // 1.获取传入的id
@@ -46,7 +52,11 @@ Page({
     this.setData({ id })
     // XXX 默认不需要，调试单页播放所需
     // playerStore.dispatch("playMusicWithSongIdAction", { id })
-
+    // playerStore.dispatch("changeNewMusicAction", () => {
+    //   console.log(ctx);
+    //   // this.setData({ playListSongs } = ctx.playListSongs)
+    // })
+    // this.setlist()
     // 2.根据id获取歌曲信息
     // this.getDetailsSongInformation(id)
     this.setupPlayerStoreListener()
@@ -185,16 +195,25 @@ Page({
   handlePlayBtnClick() {
     // playerStore.setState("isPlaying", !this.data.isPlaying)
     playerStore.dispatch("changeMusicPlaySStatusAction", !this.data.isPlaying)
+
   },
   // 上一首
-  bandlePrevBtnClick() {
+  handlePrevBtnClick() {
     playerStore.dispatch("changeNewMusicAction", false)
   },
   // 下一首
-  bandleNextBtnclick() {
+  handleNextBtnClick() {
     playerStore.dispatch("changeNewMusicAction")
   },
+  handleList() {
+    this.setData({ show: true })
+    // console.log("点击了");
+    this.setlist()
 
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
   // ************************数据监听 audio ************************
   setupPlayerStoreListener: function () {
     // 1.监听数据
@@ -202,7 +221,7 @@ Page({
       currentSong,
       durationTime,
       lyricInfos,
-      artists
+      artists,
     }) => {
       if (currentSong) this.setData({ currentSong })
       if (durationTime) this.setData({ durationTime })
@@ -241,9 +260,20 @@ Page({
       }
       if (isPlaying !== undefined) {
         this.setData({ isPlaying, playingName: isPlaying ? "pause" : "resume" })
+        this.setData({ playAnimState: isPlaying ? "running" : "paused" })
       }
     })
 
+  },
+  setlist() {
+    // BUG 列表与下一首冲突
+    //     playerStore.onStates(["playListSongs", "playListIndex"], (playListSongs, playListIndex) => {
+    //       if (playListSongs) this.setData({ playListSongs1: Object.values(playListSongs.playListSongs) })
+    // 
+    // 
+    //       // ctx.artists = res.songs[0].ar.map(item => item.name).join(' / ')
+    //     })
+    //     console.log(this.data.playListSongs1);
   },
   onUnload() {
 

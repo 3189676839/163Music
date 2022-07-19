@@ -1,6 +1,6 @@
 <!-- components/song-menu-area/index.wxml -->
 <!-- 歌单区域组件 -->
-<arear-header title="{{title}}"></arear-header>
+<arear-header title="{{title}}" bind:click="handleHotMenuClick"></arear-header>
 <!-- 第一种做法 -->
 <!-- <scroll-view scroll-x class="menu-list" style="width:{{screenWidth}}px"> -->
 <scroll-view scroll-x class="menu-list">

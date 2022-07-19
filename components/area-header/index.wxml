@@ -2,6 +2,7 @@
 <view class="header">
   <!-- header标题 -->
   <view class="title">{{title}}</view>
+  <view class="center" wx:if="{{showCenter}}">{{center}}</view>
   <!-- 右文本  showRight为true显示右文本 -->
   <view class="right" wx:if="{{showRight}}" bindtap="handleRightClick">
     <view class="slot">

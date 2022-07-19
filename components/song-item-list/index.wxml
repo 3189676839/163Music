@@ -1,0 +1,10 @@
+<!-- components/song-item-list/index.wxml -->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+<!-- 推荐歌单内容区域组件 -->
+<view class="item">
+  <view class="top">
+    <image class="image" mode="widthFix" src="{{item.coverImgUrl}}"></image>
+    <view class="play-count">{{format.formatCount(item.playCount)}}</view>
+    <view class="bottom ">{{item.description}}</view>
+  </view>
+</view>

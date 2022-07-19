@@ -60,7 +60,7 @@ Page({
     // console.log(event.currentTarget.dataset.id);
     const id = event.currentTarget.dataset.idx
     const rankingName = rankingMap[id]
-    // console.log(rankingName);
+    console.log(rankingName);
     this.navigateToDetailSongsPage(rankingName)
   },
   // 统一跳转，方便click方法传不同参数
@@ -114,7 +114,7 @@ Page({
   handleSongItemClick(event) {
     // console.log(event);
     const index = event.currentTarget.dataset.index
-    console.log(index, this.data.recommendSongs);
+    // console.log(index, this.data.recommendSongs);
     playerStore.setState("playListSongs", this.data.recommendSongs)
     playerStore.setState("playListIndex", index)
   },

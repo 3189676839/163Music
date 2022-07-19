@@ -15,6 +15,14 @@ Component({
     showRight: {
       type: Boolean,
       value: true
+    },
+    center: {
+      type: String,
+      value: "默认"
+    },
+    showCenter: {
+      type: Boolean,
+      value: false
     }
   },
 

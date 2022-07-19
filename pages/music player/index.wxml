@@ -13,10 +13,10 @@
   </view>
 </navigation-bar>
 <!-- 4.内容展示 -->
-<swiper class="content" style="height: {{contentHeight}}px" bindchange="handleSwiperChange">
+<swiper class="content" style="height:{{contentHeight}}px" bindchange="handleSwiperChange">
   <swiper-item class="music">
     <view class="album">
-      <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}"></image>
+      <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}" style="animation-play-state: {{playAnimState}};"></image>
     </view>
     <view class="info">
       <view class="title">{{currentSong.name}}</view>
@@ -39,14 +39,22 @@
     </view>
     <view class="operation">
       <image class="btn item-mode" src="/assets/images/player/play_{{playModeName}}.png" bindtap="handleModeBtnClick"></image>
-      <image class="btn item-prev" src="/assets/images/player/play_prev.png" bindtap="bandlePrevBtnClick"></image>
+      <image class="btn item-prev" src="/assets/images/player/play_prev.png" bindtap="handlePrevBtnClick"></image>
       <image class="btn item-pause" src="/assets/images/player/play_{{playingName}}.png" bindtap="handlePlayBtnClick"></image>
-      <image class="btn item-next" src="/assets/images/player/play_next.png" bindtap="bandleNextBtnclick"></image>
-      <image class="btn item-list" src="/assets/images/player/play_music.png"></image>
+      <image class="btn item-next" src="/assets/images/player/play_next.png" bindtap="handleNextBtnClick"></image>
+      <image class="btn item-list" src="/assets/images/player/play_music.png" bindtap="handleList"></image>
     </view>
+    <!-- <page-container class="tanchu" show="{{show}}" position="bottom" round overlay bind:clickoverlay="onClose">
+      <view>1111</view>
+      <view>22222</view>
+      <view>33333</view>
+    </page-container> -->
+    <van-popup class="tanchu" show="{{show}}" bindtap="onClose" position="bottom" round custom-style="height:300px">
+      <song-item-v4 item="{{playListSongs1}}" index="{{index+1}}"></song-item-v4>
+    </van-popup>
   </swiper-item>
   <swiper-item class="lyric">
-    <scroll-view class="lyric-list" scroll-y scroll-top="{{lyricScrollTop}}" scroll-with-animation="{{true}}">
+    <scroll-view class="lyric-list" scroll-y scroll-top="{{lyricScrollTop}}" scroll-with-animation>
       <block wx:for="{{lyricInfos}}" wx:key="index">
         <view class="item {{currentLyricIndex === index ? 'active' : ''}}" style="padding-top:{{index===0?(contentHeight/2-80):0}}px; padding-bottom:{{index===lyricInfos.length-1?(contentHeight/2+80):0}}px;">
           {{item.text}}

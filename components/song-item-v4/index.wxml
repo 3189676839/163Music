@@ -1,0 +1,7 @@
+<!-- components/song-item-v4/index.wxml -->
+<view class="tab" wx:for="{{item}}" wx:key="id" bindtap="playsong" data-id="{{item.id}}">
+  <view>{{index}}</view>
+  <view class="info">{{item.name}}</view>
+  <text class="doct">-</text>
+  <view class="info2">{{item.ar[0].name}}</view>
+</view>

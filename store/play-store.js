@@ -133,7 +133,7 @@ const playerStore = new HYEventStore({
     changeMusicPlaySStatusAction(ctx, isPlaying = true) {
       ctx.isPlaying = isPlaying
       if (ctx.isPlaying && ctx.isStoping) {
-        console.log(ctx);
+        // console.log(ctx);
         playMusic(ctx.id).then(res => {
           audioContext.src = res.data[0].url
         })

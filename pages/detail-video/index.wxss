@@ -1,9 +1,33 @@
 /* pages/detail-vedio/index.wxss */
-page{
+page {
   padding-top: 225px;
 }
-.video{
+
+.video {
   top: 0;
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
+
+.pages {
+  padding: 15px 15px 0 10px;
+}
+
+.details {
+  padding-bottom: 20px;
+}
+
+.dName {
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.count {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(100, 100, 100);
+}
+
+/* 相关视频 */

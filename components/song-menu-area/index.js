@@ -34,6 +34,11 @@ Component({
       wx.navigateTo({
         url: `/pages/detail-songs/index?id=${item.id}&type=menu`
       })
+    },
+    handleHotMenuClick() {
+      wx.navigateTo({
+        url: `/pages/detail-menu/index`
+      })
     }
   }
 })

@@ -71,12 +71,13 @@ Page({
 
   // 封装事件处理的方法
   handleVideoItemClick: function (event) {
-    console.log(event.currentTarget.dataset.item)
+    // console.log(event)
     // 获取id
     const id = event.currentTarget.dataset.item.id
+    const index = event.currentTarget.dataset.index
     // 页面跳转
     wx.navigateTo({
-      url: `/pages/detail-video/index?id=${id}`,
+      url: `/pages/detail-video/index?id=${id}&index=${index}`,
     })
   },
   /**

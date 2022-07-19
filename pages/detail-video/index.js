@@ -19,14 +19,15 @@ Page({
   onLoad(options) {
     // 1.获取传入的id
     const id = options.id
+    const offset = options.index
     console.log("id=" + id)
-
+    // console.log("index" + index);
     // 2.获取页面的数据
-    this.getPageData(id)
+    this.getPageData(id, offset)
 
     //TODO:其他逻辑
   },
-  getPageData(id) {
+  getPageData(id, offset) {
     // 1.请求播放地址
     getMvUrl(id).then(res => {
       this.setData({ mvURLInfo: res.data.data })
@@ -36,11 +37,19 @@ Page({
       this.setData({ mvDetail: res.data.data })
     })
     // 3.请求相关视频
-    getRelatedVideo(id).then(res => {
+    getRelatedVideo(offset).then(res => {
       this.setData({ relatedVideos: res.data.data })
+      // console.log(res);
     })
   },
-
+  handleVideoItemClick(event) {
+    // console.log(event);
+    const id = event.currentTarget.dataset.item.id
+    const index = event.currentTarget.dataset.index
+    wx.navigateTo({
+      url: `/pages/detail-video/index?id=${id}&index=${index}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

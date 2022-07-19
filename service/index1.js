@@ -2,7 +2,7 @@ import { TOKEN_KEY } from "../constants/token-const"
 const token = wx.getStorageSync(TOKEN_KEY)
 
 // 统一封装请求接口地址
-const BASE_URL = 'https://caozhengguo.top'
+const BASE_URL = 'https://www.codeman.ink/api'
 // const BASE_URL = 'https://netease-cloud-music-api-chi-cyan.vercel.app/'
 // const BASE_URL = "http://123.207.32.32:9001"
 const LOGIN_BASE_URL = "http://123.207.32.32:3000"

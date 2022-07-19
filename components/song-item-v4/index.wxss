@@ -1,0 +1,27 @@
+/* components/song-item-v4/index.wxss */
+
+.tab {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 3rpx 15rpx;
+}
+
+.info {
+  font-size: 35rpx;
+  font-weight: 400;
+  color: #000;
+}
+
+.doct {
+  /* display: inline-block; */
+  font-size: 60rpx;
+  margin: 0 10px;
+  color: #ccc;
+}
+
+.info2 {
+  font-size: 30rpx;
+  font-weight: 400;
+  color: #ccc;
+}

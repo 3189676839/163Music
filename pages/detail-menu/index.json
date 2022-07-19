@@ -2,8 +2,8 @@
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
   "usingComponents": {
+    "area-header":"/components/area-header/index",
     "navigation-bar":"/baseUI/navigation-bar/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "song-item-v4":"/components/song-item-v4/index"
+    "song-item-list":"/components/song-item-list/index"
   }
 }
